@@ -47,4 +47,14 @@ public class ClienteDaoImpl implements ClienteDaoI{
 		session.close();		
 	}
 
+	@Override
+	public List<Cliente> buscarPorApellidos(String apellido1, String apellido2) {
+		Session session = entityManager.unwrap(Session.class);
+		List<Cliente> clientes = (List<Cliente>) session
+		.createQuery("FROM Cliente WHERE PRIMER_APELLIDO='"+apellido1+"' AND SEGUNDO_APELLIDO='"+apellido2+"'")
+		.list();
+		session.close();
+		return clientes;
+	}
+
 }

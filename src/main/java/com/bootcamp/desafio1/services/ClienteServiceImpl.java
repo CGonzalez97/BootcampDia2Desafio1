@@ -33,6 +33,11 @@ public class ClienteServiceImpl implements ClienteServiceI {
 	public void actualizarCliente(Cliente cliente) {
 		clienteDao.actualizarCliente(cliente);		
 	}
+
+	@Override
+	public List<Cliente> buscarPorApellidos(String apellido1, String apellido2) {
+		return clienteDao.buscarPorApellidos(apellido1, apellido2);		
+	}
 	
 	
 

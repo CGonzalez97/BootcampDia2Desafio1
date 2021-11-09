@@ -49,7 +49,16 @@ public class Desafio1Application implements CommandLineRunner {
 		cliente1.setNombre(nuevoNombre);
 		System.out.println(cliente1);
 		clienteService.actualizarCliente(cliente1);
-		System.out.println("Cliente modificado:"+clienteService.buscarClientePorId(cliente1Id));				
+		System.out.println("Cliente modificado:"+clienteService.buscarClientePorId(cliente1Id));
+		
+		System.out.println("\nBuscar cliente por apellidos.");
+		String apellido1 = cliente2.getPrimerApellido();
+		String apellido2 = cliente2.getSegundoApellido();
+		List<Cliente> listadoClientes = clienteService.buscarPorApellidos(apellido1,apellido2);
+		for (Cliente cliente : listadoClientes) {
+			System.out.println(cliente);
+		}
+		
 	}
 
 }
