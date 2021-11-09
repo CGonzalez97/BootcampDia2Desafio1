@@ -49,7 +49,7 @@ public class Desafio1Application implements CommandLineRunner {
 		cliente1.setNombre(nuevoNombre);
 		System.out.println(cliente1);
 		clienteService.actualizarCliente(cliente1);
-		System.out.println("Cliente modificado:"+clienteService.buscarClientePorId(cliente1.getId()));				
+		System.out.println("Cliente modificado:"+clienteService.buscarClientePorId(cliente1Id));				
 	}
 
 }

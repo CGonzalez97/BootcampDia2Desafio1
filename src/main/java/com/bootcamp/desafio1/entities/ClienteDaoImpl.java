@@ -3,6 +3,7 @@ package com.bootcamp.desafio1.entities;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,7 @@ public class ClienteDaoImpl implements ClienteDaoI{
 	}
 
 	@Override
+	@Transactional
 	public void actualizarCliente(Cliente cliente) {
 		Session session = entityManager.unwrap(Session.class);
 		session.update(cliente);
