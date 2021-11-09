@@ -72,6 +72,48 @@ public class Desafio1Application implements CommandLineRunner {
 			System.out.println(cliente);
 		}
 		
+		System.out.println("\nEliminación de un cliente");
+		cliente2 = clienteService.buscarClientePorId(cliente2Id);
+		clienteService.eliminarCliente(cliente2);
+		System.out.println("\ncomprobación del borrado");
+		List<Cliente> listadoclientes2 = clienteService.buscarClientes();
+		for (Cliente cliente : listadoclientes2) {
+			System.out.println(cliente);
+		}
+		
+		System.out.println("\n\n--------------------------------------------\n\n");
+		System.out.println("Comprobación del servicio de contrato");
+		Contrato contrato3 = new Contrato(Date.valueOf("2020-03-03"),Date.valueOf("2022-03-03"),33.3);
+		Long idContratoPruebas = contratoService.insertarContratoe(contrato3);
+		cliente1.addContrato(contrato3);
+		clienteService.actualizarCliente(cliente1);
+		contratoService.actualizarContrato(contrato3);
+		List<Contrato> listadoContratos = contratoService.buscarContratos();
+		for (Contrato contrato : listadoContratos) {
+			System.out.println(contrato);
+		}
+		
+		System.out.println("\nBuscar contrato por id.");
+		Contrato contratoPruebas = contratoService.buscarContratoPorId(idContratoPruebas);
+		System.out.println(contratoPruebas);
+		
+		System.out.println("\nActualizar el contrato");
+		contratoPruebas.setPrecioMensual(111.0);
+		contratoService.actualizarContrato(contratoPruebas);
+		System.out.println(contratoService.buscarContratoPorId(idContratoPruebas));
+		
+		System.out.println("\nEliminación de un contrato");
+		contratoPruebas = contratoService.buscarContratoPorId(idContratoPruebas);
+		System.out.println("\nContratoPruebas: "+contratoPruebas);
+//		contratoService.eliminarContrato(contratoPruebas);
+		
+		List<Contrato> listadoContratos2 = contratoService.buscarContratos();
+		for (Contrato contrato : listadoContratos2) {
+			System.out.println(contrato);
+		}
+		
+		
+		
 	}
 
 }

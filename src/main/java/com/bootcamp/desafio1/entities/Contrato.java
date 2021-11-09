@@ -105,7 +105,7 @@ public class Contrato {
 	@Override
 	public String toString() {
 		return "Contrato [id=" + id + ", fechaVigencia=" + fechaVigencia + ", fechaCaducidad=" + fechaCaducidad
-				+ ", precioMensual=" + precioMensual + ", cliente=" + cliente + "]";
+				+ ", precioMensual=" + precioMensual + "]";
 	}
 	
 	
