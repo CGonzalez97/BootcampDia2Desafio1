@@ -1,10 +1,15 @@
 package com.bootcamp.desafio1.entities;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,6 +31,9 @@ public class Cliente {
 	
 	@Column(name = "DNI", nullable = false, length = 9)
 	private String dni;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "cliente")
+	private List<Contrato> contratos;
 
 	public Cliente() {
 		super();
@@ -87,11 +95,32 @@ public class Cliente {
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
+	
+	
+
+	public List<Contrato> getContratos() {
+		return contratos;
+	}
+
+	public void setContratos(List<Contrato> contratos) {
+		this.contratos = contratos;
+	}
 
 	@Override
 	public String toString() {
 		return "Cliente [id=" + id + ", nombre=" + nombre + ", primerApellido=" + primerApellido + ", segundoApellido="
 				+ segundoApellido + ", dni=" + dni + "]";
+	}
+	
+	//Helpers contrato
+	public void addContrato(Contrato contrato) {
+		contrato.setCliente(this);
+		contratos.add(contrato);
+	}
+	
+	public void removeContrato(Contrato contrato) {
+		contrato.setCliente(null);
+		contratos.remove(contrato);
 	}
 
 	

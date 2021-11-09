@@ -38,6 +38,11 @@ public class ClienteServiceImpl implements ClienteServiceI {
 	public List<Cliente> buscarPorApellidos(String apellido1, String apellido2) {
 		return clienteDao.buscarPorApellidos(apellido1, apellido2);		
 	}
+
+	@Override
+	public void eliminarCliente(Cliente cliente) {
+		clienteDao.eliminarCliente(cliente);
+	}
 	
 	
 

@@ -43,7 +43,8 @@ public class ClienteDaoImpl implements ClienteDaoI{
 	@Transactional
 	public void actualizarCliente(Cliente cliente) {
 		Session session = entityManager.unwrap(Session.class);
-		session.update(cliente);
+//		session.update(cliente);
+		session.merge(cliente);
 		session.close();		
 	}
 
@@ -55,6 +56,12 @@ public class ClienteDaoImpl implements ClienteDaoI{
 		.list();
 		session.close();
 		return clientes;
+	}
+
+	@Override
+	@Transactional
+	public void eliminarCliente(Cliente cliente) {
+		entityManager.remove(entityManager.merge(cliente));		
 	}
 
 }

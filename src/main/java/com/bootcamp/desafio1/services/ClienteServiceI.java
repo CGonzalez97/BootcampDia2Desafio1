@@ -15,5 +15,7 @@ public interface ClienteServiceI {
 	public void actualizarCliente(Cliente cliente);
 	
 	public List<Cliente>buscarPorApellidos(String apellido1, String apellido2);
+	
+	public void eliminarCliente(Cliente cliente);
 
 }
