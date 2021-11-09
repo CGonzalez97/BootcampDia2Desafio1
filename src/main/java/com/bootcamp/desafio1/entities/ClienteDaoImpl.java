@@ -15,10 +15,11 @@ public class ClienteDaoImpl implements ClienteDaoI{
 	EntityManager entityManager;
 
 	@Override
-	public void insertarCliente(Cliente cliente) {
+	public Long insertarCliente(Cliente cliente) {
 		Session session = entityManager.unwrap(Session.class);
-		session.save(cliente);
+		Long id =  (Long) session.save(cliente);
 		session.close();
+		return id;
 	}
 
 	@Override
@@ -35,6 +36,13 @@ public class ClienteDaoImpl implements ClienteDaoI{
 		Cliente cliente = (Cliente) session.createQuery("FROM Cliente WHERE id="+id).uniqueResult();
 		session.close();
 		return cliente;
+	}
+
+	@Override
+	public void actualizarCliente(Cliente cliente) {
+		Session session = entityManager.unwrap(Session.class);
+		session.update(cliente);
+		session.close();		
 	}
 
 }

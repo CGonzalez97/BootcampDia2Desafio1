@@ -15,8 +15,8 @@ public class ClienteServiceImpl implements ClienteServiceI {
 	ClienteDaoI clienteDao;
 
 	@Override
-	public void insertarCliente(Cliente cliente) {
-		clienteDao.insertarCliente(cliente);		
+	public Long insertarCliente(Cliente cliente) {
+		return clienteDao.insertarCliente(cliente);		
 	}
 
 	@Override
@@ -28,5 +28,12 @@ public class ClienteServiceImpl implements ClienteServiceI {
 	public Cliente buscarClientePorId(Long id) {
 		return clienteDao.searchById(id);
 	}
+
+	@Override
+	public void actualizarCliente(Cliente cliente) {
+		clienteDao.actualizarCliente(cliente);		
+	}
+	
+	
 
 }

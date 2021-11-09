@@ -6,10 +6,12 @@ import com.bootcamp.desafio1.entities.Cliente;
 
 public interface ClienteServiceI {
 	
-	public void insertarCliente(Cliente cliente);
+	public Long insertarCliente(Cliente cliente);
 	
 	public List<Cliente> buscarClientes();
 	
 	public Cliente buscarClientePorId(Long id);
+	
+	public void actualizarCliente(Cliente cliente);
 
 }

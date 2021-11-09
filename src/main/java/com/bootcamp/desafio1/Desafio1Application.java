@@ -26,9 +26,9 @@ public class Desafio1Application implements CommandLineRunner {
 		Cliente cliente2 = new Cliente("María","Lozano","Gallego","23456789B");
 		Cliente cliente3 = new Cliente("Pablo","Martín","Real","34567890C");
 		
-		clienteService.insertarCliente(cliente1);
-		clienteService.insertarCliente(cliente2);
-		clienteService.insertarCliente(cliente3);
+		Long cliente1Id = clienteService.insertarCliente(cliente1);
+		Long cliente2Id = clienteService.insertarCliente(cliente2);
+		Long cliente3Id = clienteService.insertarCliente(cliente3);
 		
 		System.out.println("Listado de clientes:");
 		List<Cliente> listado = clienteService.buscarClientes();
@@ -43,7 +43,13 @@ public class Desafio1Application implements CommandLineRunner {
 			System.out.println(buscado);
 		}
 		
-				
+		String nuevoNombre = "Alberto";
+		System.out.println("Actualicemos el primer cliente, cambiando su nombre(Manuel) por "+nuevoNombre);
+		cliente1 = clienteService.buscarClientePorId(cliente1Id);
+		cliente1.setNombre(nuevoNombre);
+		System.out.println(cliente1);
+		clienteService.actualizarCliente(cliente1);
+		System.out.println("Cliente modificado:"+clienteService.buscarClientePorId(cliente1.getId()));				
 	}
 
 }
